@@ -9,7 +9,7 @@ describe('reverseInput function', () => {
   });
   it('reverses multiple words', () => {
     const input = "the quick brown fox";
-    const expected = "quick the brown fox";
+    const expected = "fox brown quick the";
     expect(reverseInput(input)).toEqual(expected);
   });
 });
