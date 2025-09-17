@@ -1,6 +1,6 @@
 export function reverseInput(input: string): string 
 {
-  const parts = input.split(" "); // split input
+  const parts = input.split(","); // split input
   let result: string[] = [];      // store reversed
 
   for (let i = parts.length - 1; i >= 0; i--) // loop backwards
