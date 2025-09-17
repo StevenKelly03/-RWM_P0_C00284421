@@ -1,8 +1,9 @@
 {
 	"name": "rwm-p0-c00284421",
-	"version": "0.0.1",
+	"version": "0.1.0",
 	"type": "module",
-	"scripts": {
+	"main" :"index.ts",
+	"scripts": { 
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
