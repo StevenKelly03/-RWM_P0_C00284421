@@ -27,6 +27,6 @@
     "vitest": "^3.2.4"
   },
   "dependencies": {
-    "realwsim": "github:Danny-delaney/RWM_P0_C00286125#v0.1.2"
+    "realwsim": "github:Danny-delaney/RWM_P0_C00286125#v0.2.0"
   }
 }
