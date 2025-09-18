@@ -2,7 +2,6 @@
   "name": "rwm-p0-c00284421",
   "version": "0.1.1",
   "type": "module",
-  "exports": { ".": "./src/lib/filters/index.ts"},
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -22,5 +21,8 @@
     "typescript": "^5.0.0",
     "vite": "^7.0.4",
     "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "realwsim": "github:Danny-delaney/RWM_P0_C00286125#v0.0.1"
   }
 }
