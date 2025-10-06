@@ -1,7 +1,7 @@
 <script>
   import ChecklistItem from '$lib/ChecklistItem.svelte';
 
-  // Placeholder checklist items
+  // Example checklist items
   let items = [
     { id: 1, label: 'Item 1', done: false },
     { id: 2, label: 'Item 2', done: false },
@@ -10,20 +10,24 @@
     { id: 5, label: 'Item 5', done: false },
   ];
 
-  // Local state to track user toggles
+  // Track current checkbox states independently
   let currentStates = items.map(i => i.done);
 
-  // Progress label state (only updates on Submit)
+  // Progress label state (updates on Submit)
   let completedCount = 0;
 
+  // Called whenever a checkbox changes
   function handleItemChange(event, index) {
     currentStates[index] = event.detail.done;
   }
 
+  // Called on Submit to calculate completion
   function handleSubmit() {
     completedCount = currentStates.filter(done => done).length;
   }
 </script>
+
+<h2>Checklist Progress</h2>
 
 <ul>
   {#each items as item, index}
@@ -38,6 +42,9 @@
   {/each}
 </ul>
 
-<p>Completed: {completedCount}/{items.length} ({Math.round((completedCount / items.length) * 100)}%)</p>
+<p>
+  Completed: {completedCount}/{items.length} 
+  ({Math.round((completedCount / items.length) * 100)}%)
+</p>
 
 <button on:click={handleSubmit}>Submit version</button>
