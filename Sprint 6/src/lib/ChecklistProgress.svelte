@@ -1,50 +1,36 @@
-<script>
+<script lang="ts">
   import ChecklistItem from '$lib/ChecklistItem.svelte';
-
-  // Example checklist items
-  let items = [
-    { id: 1, label: 'Item 1', done: false },
-    { id: 2, label: 'Item 2', done: false },
-    { id: 3, label: 'Item 3', done: false },
-    { id: 4, label: 'Item 4', done: false },
-    { id: 5, label: 'Item 5', done: false },
-  ];
-
-  // Track current checkbox states independently
-  let currentStates = items.map(i => i.done);
-
-  // Progress label state (updates on Submit)
-  let completedCount = 0;
-
-  // Called whenever a checkbox changes
-  function handleItemChange(event, index) {
-    currentStates[index] = event.detail.done;
-  }
-
-  // Called on Submit to calculate completion
+  import { itemsStore, completedStore, percentStore, type Item } from '../stores'; 
+  
+  $: items = $itemsStore as Item[]; 
+  
+  let completedCount = 0; 
+  $: itemsTotal = items.length; 
+  let percentComplete = 0; 
+  
   function handleSubmit() {
-    completedCount = currentStates.filter(done => done).length;
+    completedCount = $completedStore;
+    percentComplete = $percentStore;
   }
 </script>
 
 <h2>Checklist Progress</h2>
 
 <ul>
-  {#each items as item, index}
+  {#each items as item}
     <li>
       <ChecklistItem
         id={item.id}
         label={item.label}
-        done={currentStates[index]}
-        on:change={(e) => handleItemChange(e, index)}
+        done={item.done} 
       />
     </li>
   {/each}
 </ul>
 
 <p>
-  Completed: {completedCount}/{items.length} 
-  ({Math.round((completedCount / items.length) * 100)}%)
+  Completed: {completedCount}/{itemsTotal} 
+  ({percentComplete}%)
 </p>
 
 <button on:click={handleSubmit}>Submit version</button>
