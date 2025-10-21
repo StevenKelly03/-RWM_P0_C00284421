@@ -17,7 +17,7 @@
   }
 </script>
 
-<label>
+<label data-testid="checklist-item">
   <input type="checkbox" bind:checked={done} on:change={toggle} />
   {label}
 </label>
