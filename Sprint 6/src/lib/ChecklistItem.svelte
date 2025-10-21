@@ -7,9 +7,11 @@
 
   function toggle() 
   {
-    itemsStore.update(items => {
+    itemsStore.update(items => 
+    {
       const item = items.find(i => i.id === id);
-      if (item) {
+      if (item) 
+      {
         item.done = !item.done;
       }
       return items; 
